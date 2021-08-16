@@ -1,28 +1,37 @@
 class NegociacaoController {
 
     constructor() {
-        let $ = document.querySelector.bind(document);
-        this._inputData = $('#data');
-        this._inputQuantidade = $('#quantidade');
-        this._inputValor = $('#valor');
+        let $ = document.querySelector.bind(document)
+        this._inputData = $('#data')
+        this._inputQuantidade = $('#quantidade')
+        this._inputValor = $('#valor')
+        this._listaNegociacoes = new ListaNegociacoes()
+        this._negociacoesView = new NegociacoesView($('#negociacoesView'));
+        this._negociacoesView.update(this._listaNegociacoes);
     }
 
 
     adiciona(event) {
-        event.preventDefault();
-        console.log(typeof (this._inputData.value))
-        console.log(this._inputData.value)
-        let data = new Date(...this._inputData.value.split('-').map((item, index) => item - index % 2))
-        let negociacao = new Negociacao(
-            data,
-            this._inputQuantidade.value,
-            this._inputValor.value
-        );
-        console.log(negociacao);
-        let lista1 = ['banana', 'laranja', 'mamão'];
-        let lista2 = ['caju', 'tangerina', 'abacaxi'];
+        event.preventDefault()
 
-        lista1.push(lista2);
-        console.log(lista1);
+        this._listaNegociacoes.adiciona(this._criaNegociacao())
+        this._negociacoesView.update(this._listaNegociacoes);
+        // this._limpaFormulario();
+        // console.log(this._listaNegociacoes.negociacoes)
+    }
+
+    _limpaFormulario() {
+        this._inputData.value = ''
+        this._inputQuantidade.value = 1
+        this._inputValor.value = 0.0
+
+        this._inputData.focus()
+    }
+
+    _criaNegociacao() {
+        return new Negociacao(
+            DateHelper.textoParaData(this._inputData.value),
+            this._inputQuantidade.value,
+            this._inputValor.value)
     }
 }

@@ -17,7 +17,7 @@
 
         <div class="form-group">
             <label for="data">Data</label>
-            <input type="date" id="data" class="form-control" required autofocus />
+            <input type="date" id="data" value="1989-09-30" class="form-control" required autofocus />
         </div>
 
         <div class="form-group">
@@ -27,7 +27,7 @@
 
         <div class="form-group">
             <label for="valor">Valor</label>
-            <input id="valor" type="number" class="form-control" min="0.01" step="0.01" value="0.0" required />
+            <input id="valor" type="number" class="form-control" min="0.01" step="0.01" value="100" required />
         </div>
 
         <button class="btn btn-primary" type="submit">Incluir</button>
@@ -43,25 +43,15 @@
     </div>
     <br>
     <br>
+    <div id="negociacoesView">
 
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>DATA</th>
-                <th>QUANTIDADE</th>
-                <th>VALOR</th>
-                <th>VOLUME</th>
-            </tr>
-        </thead>
+    </div>
 
-        <tbody>
-        </tbody>
-
-        <tfoot>
-        </tfoot>
-    </table>
     <script src="js/app/models/Negociacao.js"></script>
     <script src="js/app/controllers/NegociacaoController.js"></script>
+    <script src="js/app/helpers/DateHelper.js"></script>
+    <script src="js/app/models/ListaNegociacoes.js"></script>
+    <script src="js/app/views/NegociacoesView.js"></script>
     <script>
         let negociacaoController = new NegociacaoController()
         // let numeros = [3, 2, 11, 20, 8, 7]
@@ -73,33 +63,42 @@
         // }
         // let numeros = [10, 30];
         // console.log(somaDoisNumeros(...numeros));
-        class Aluno {
+        // class Aluno {
 
-            constructor(matricula, nome) {
-                this.matricula = matricula;
-                this.nome = nome;
-            }
-        }
+        //     constructor(matricula, nome) {
+        //         this.matricula = matricula;
+        //         this.nome = nome;
+        //     }
+        // }
 
-        class Prova {
+        // class Prova {
 
-            constructor(aluno, nota) {
-                this.aluno = aluno;
-                this.nota = nota;
-            }
-        }
-        let avaliacoes = [
-            new Prova(new Aluno(1, 'Luana'), 8),
-            new Prova(new Aluno(2, 'Cássio'), 6),
-            new Prova(new Aluno(3, 'Barney'), 9),
-            new Prova(new Aluno(4, 'Bira'), 5)
-        ];
+        //     constructor(aluno, nota) {
+        //         this.aluno = aluno;
+        //         this.nota = nota;
+        //     }
+        // }
+        // let avaliacoes = [
+        //     new Prova(new Aluno(1, 'Luana'), 8),
+        //     new Prova(new Aluno(2, 'Cássio'), 6),
+        //     new Prova(new Aluno(3, 'Barney'), 9),
+        //     new Prova(new Aluno(4, 'Bira'), 5)
+        // ];
 
-        let aprovados = avaliacoes
-            .filter(prova => prova.nota >= 7)
-            .map(prova => prova.aluno.nome);
+        // let aprovados = avaliacoes
+        //     .filter(prova => prova.nota >= 7)
+        //     .map(prova => prova.aluno.nome);
 
-        console.log(aprovados);
+        // console.log(aprovados);
+        const salaDePython = ['Melissa', 'Helena', 'Rodrigo']
+        const salaDeJavasScript = ['Ju', 'Leon', 'Raquel']
+
+        const salasUnificadas = [...salaDePython, ...salaDeJavasScript]
+        console.log(salasUnificadas)
+
+        salaDePython.push('Caetano');
+        console.log(salasUnificadas)
     </script>
 </body>
+
 </html>
